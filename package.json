@@ -1,0 +1,24 @@
+{
+  "name": "alien-blood-contrast",
+  "displayName": "Alien Blood Contrast",
+  "description": "A dark theme combining Alien Blood UI with Solarized Dark syntax highlighting",
+  "version": "0.1.0",
+  "publisher": "kozcode",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Alien Blood Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast.json"
+      }
+    ]
+  }
+}
