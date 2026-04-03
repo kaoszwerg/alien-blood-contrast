@@ -6,6 +6,10 @@
   "publisher": "kozcode",
   "license": "MIT",
   "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaoszwerg/alien-blood-contrast"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },
