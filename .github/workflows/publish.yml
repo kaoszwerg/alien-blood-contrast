@@ -25,11 +25,11 @@ jobs:
     name: Publish to VS Code Marketplace
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       # A Marketplace version cannot be replaced, only superseded — so every
       # check runs before anything is uploaded.

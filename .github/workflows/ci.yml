@@ -11,11 +11,11 @@ jobs:
     name: Verify generated files and package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       # themes/alien-blood-contrast.json is the only hand-maintained file.
       # If regenerating changes anything, a derived file was edited by hand.
@@ -33,7 +33,7 @@ jobs:
         run: npx --yes @vscode/vsce package --out /tmp/extension.vsix
 
       - name: Upload VSIX
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: vsix
           path: /tmp/extension.vsix
