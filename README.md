@@ -100,6 +100,23 @@ Edit the base theme, run the script, and everything stays in sync. Hand edits to
 
 Rerun `npm run build-preview` after changing the base theme, otherwise the page shows stale colors.
 
+## Releasing
+
+Publishing runs from GitHub Actions. Tag a version and the workflow builds, checks and uploads it:
+
+```
+npm version 0.4.0 --no-git-tag-version
+git commit -am "Bump to v0.4.0"
+git tag v0.4.0
+git push && git push --tags
+```
+
+The workflow refuses to publish if the tag does not match `package.json`, or if `npm run build` changes any file — that catches a hand-edited generated theme before it reaches the Marketplace, where a version can never be replaced, only superseded.
+
+**One-time setup:** add a repository secret named `VSCE_PAT` under *Settings → Secrets and variables → Actions*. It is an Azure DevOps personal access token for the publisher account, scoped to *Marketplace → Manage*.
+
+To rehearse without publishing, run the workflow manually from the Actions tab with *dry run* enabled — it builds and runs every check but uploads nothing.
+
 ## Credits
 
 This theme is a combination of two excellent themes:

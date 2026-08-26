@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Verify generated files and package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # themes/alien-blood-contrast.json is the only hand-maintained file.
+      # If regenerating changes anything, a derived file was edited by hand.
+      - name: Generated files are up to date
+        run: |
+          npm run build
+          if ! git diff --quiet; then
+            echo "::error::Generated files are stale. Run 'npm run build' and commit the result."
+            git diff --stat
+            git diff
+            exit 1
+          fi
+
+      - name: Package builds
+        run: npx --yes @vscode/vsce package --out /tmp/extension.vsix
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: /tmp/extension.vsix
+          retention-days: 14
