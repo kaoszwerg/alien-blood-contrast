@@ -1,0 +1,12 @@
+{
+  "workbench.colorCustomizations": {
+    "[Alien Blood Contrast][Alien Blood Contrast High]": {
+      "statusBar.background": "#2f7e25",
+      "statusBar.foreground": "#f2f8f5",
+      "statusBar.border": "#2f7e25",
+      "statusBar.debuggingBackground": "#2f7e25",
+      "statusBar.debuggingForeground": "#f2f8f5",
+      "statusBar.noFolderBackground": "#2f7e25"
+    }
+  }
+}

@@ -1,1 +1,4 @@
 *.vsix
+
+# persoenliche Claude-Code-Konfiguration, nicht teamweit
+.claude/settings.local.json
