@@ -1,8 +1,8 @@
 {
   "name": "alien-blood-contrast",
   "displayName": "Alien Blood Contrast",
-  "description": "A dark theme combining Alien Blood UI with Solarized Dark syntax highlighting",
-  "version": "0.1.1",
+  "description": "Dark themes combining Alien Blood UI with Solarized Dark syntax highlighting, in a standard and a high contrast variant",
+  "version": "0.2.0",
   "publisher": "kozcode",
   "license": "MIT",
   "icon": "icon.png",
@@ -22,6 +22,11 @@
         "label": "Alien Blood Contrast",
         "uiTheme": "vs-dark",
         "path": "./themes/alien-blood-contrast.json"
+      },
+      {
+        "label": "Alien Blood Contrast High",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-high.json"
       }
     ]
   }
