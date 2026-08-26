@@ -1,8 +1,8 @@
 {
   "name": "alien-blood-contrast",
   "displayName": "Alien Blood Contrast",
-  "description": "Dark themes combining Alien Blood UI with Solarized Dark syntax highlighting, in a standard and a high contrast variant",
-  "version": "0.2.0",
+  "description": "Dark themes combining Alien Blood UI with Solarized Dark syntax highlighting, in standard and high contrast, each with optional status bar accents to tell windows apart",
+  "version": "0.3.0",
   "publisher": "kozcode",
   "license": "MIT",
   "icon": "icon.png",
@@ -16,6 +16,9 @@
   "categories": [
     "Themes"
   ],
+  "scripts": {
+    "build-themes": "node scripts/build-themes.js"
+  },
   "contributes": {
     "themes": [
       {
@@ -24,9 +27,49 @@
         "path": "./themes/alien-blood-contrast.json"
       },
       {
+        "label": "Alien Blood Contrast Green",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-green.json"
+      },
+      {
+        "label": "Alien Blood Contrast Blue",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-blue.json"
+      },
+      {
+        "label": "Alien Blood Contrast Orange",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-orange.json"
+      },
+      {
+        "label": "Alien Blood Contrast Violet",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-violet.json"
+      },
+      {
         "label": "Alien Blood Contrast High",
         "uiTheme": "vs-dark",
         "path": "./themes/alien-blood-contrast-high.json"
+      },
+      {
+        "label": "Alien Blood Contrast High Green",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-high-green.json"
+      },
+      {
+        "label": "Alien Blood Contrast High Blue",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-high-blue.json"
+      },
+      {
+        "label": "Alien Blood Contrast High Orange",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-high-orange.json"
+      },
+      {
+        "label": "Alien Blood Contrast High Violet",
+        "uiTheme": "vs-dark",
+        "path": "./themes/alien-blood-contrast-high-violet.json"
       }
     ]
   }

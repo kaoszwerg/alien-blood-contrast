@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-alien-blood-contrast — eine VS Code Color Theme Extension, die Alien Blood UI mit Solarized Dark Syntax-Highlighting kombiniert. Sie liefert **zwei** Themes in einem Paket aus (`contributes.themes` ist ein Array): die Standard-Variante und eine kontrastverstärkte Variante.
+alien-blood-contrast — eine VS Code Color Theme Extension, die Alien Blood UI mit Solarized Dark Syntax-Highlighting kombiniert. Sie liefert **zehn** Themes in einem Paket aus (`contributes.themes` ist ein Array): zwei Kontraststufen, jeweils neutral oder mit einem von vier Statusbar-Akzenten.
 
 ## Merge-Strategie
 
@@ -14,11 +14,24 @@ alien-blood-contrast — eine VS Code Color Theme Extension, die Alien Blood UI 
 
 ## Struktur
 
-- `package.json` — Extension-Manifest, registriert das Theme unter `contributes.themes`
-- `themes/alien-blood-contrast.json` — Standard-Variante
-- `themes/alien-blood-contrast-high.json` — kontrastverstärkte Variante ("Alien Blood Contrast High")
+- `package.json` — Extension-Manifest, registriert die Themes unter `contributes.themes`
+- `themes/alien-blood-contrast.json` — **die einzige handgepflegte Datei**, Quelle für alles andere
+- `themes/alien-blood-contrast-{green,blue,orange,violet}.json` — generiert
+- `themes/alien-blood-contrast-high*.json` — generiert
+- `scripts/build-themes.js` — Generator
 
-Die High-Variante ist eine reine Ableitung der Standard-Variante: gleiche Keys, gleiche Reihenfolge, gleiche Alien-Blood-Farbtöne — nur Helligkeit und Sättigung angehoben (Syntax: Solarized Dark → Solarized Bright). Bei Änderungen an der Standard-Variante muss die High-Variante entsprechend nachgezogen werden.
+## Generieren
+
+```
+npm run build-themes
+```
+
+Der Generator liest die Basisdatei und schreibt neun abgeleitete Theme-Dateien plus die `contributes.themes`-Liste in `package.json`. **Änderungen gehören ausschließlich in die Basisdatei** — Handänderungen an den generierten Dateien gehen beim nächsten Lauf verloren.
+
+Zwei Ableitungsregeln stecken im Generator:
+
+- **High-Kontrast**: Keys mit `background` oder `shadow` im Namen behalten den Original-Alien-Blood-Wert, alle übrigen werden über eine Farbtabelle aufgehellt (Syntax: Solarized Dark → hellere Werte). Die Flächen bleiben dadurch exakt das Original-Theme.
+- **Akzente**: setzen ausschließlich `statusBar*`-Keys, damit sich mehrere Fenster unterscheiden lassen.
 
 ## Testen
 

@@ -6,14 +6,18 @@ A dark VS Code color theme that combines the deep green UI atmosphere of **Alien
 
 ## Themes
 
-This extension ships **two** themes:
+This extension ships **ten** themes from one package — two contrast levels, each available neutral or with one of four status bar accents.
 
-| Theme | Description |
-| --- | --- |
-| **Alien Blood Contrast** | The original balance — Alien Blood UI, Solarized Dark syntax |
-| **Alien Blood Contrast High** | Same look, more contrast — darker backgrounds, brighter foregrounds, Solarized Bright syntax values |
+| | Neutral | Green | Blue | Orange | Violet |
+| --- | --- | --- | --- | --- | --- |
+| **Standard** | Alien Blood Contrast | … Green | … Blue | … Orange | … Violet |
+| **High contrast** | … High | … High Green | … High Blue | … High Orange | … High Violet |
 
-The high contrast variant keeps the exact same Alien Blood hues, it only raises brightness and saturation. Every syntax color clears the WCAG AA threshold of 4.5:1 against the editor background (lowest is 5.3:1, versus 3.4:1 in the standard variant).
+**Standard** is the original balance: Alien Blood UI, Solarized Dark syntax.
+
+**High contrast** keeps every Alien Blood hue and every background surface untouched — it only raises the brightness of text, icons, borders and line numbers. Syntax moves to brighter Solarized values. Every syntax color clears WCAG AA against the editor background; the weakest is 6.15:1, versus 3.42:1 in the standard variant.
+
+The accent variants are byte-identical to their neutral counterpart apart from the `statusBar*` keys. See [Telling windows apart](#telling-windows-apart).
 
 ## Concept
 
@@ -28,42 +32,61 @@ This gives you the distinctive Alien Blood look and feel while keeping the highl
 2. Search for **Alien Blood Contrast**
 3. Click **Install**
 4. Open **Color Theme** picker (`Cmd+K Cmd+T` / `Ctrl+K Ctrl+T`)
-5. Select **Alien Blood Contrast** or **Alien Blood Contrast High**
+5. Pick any of the ten **Alien Blood Contrast** entries
 
 ## Telling windows apart
 
-If you keep several VS Code windows open, you can give each project its own title bar color while staying on the same theme. Add this to the project's `.vscode/settings.json`:
+If you keep several VS Code windows open, give each project its own status bar color. The status bar suits this better than the title bar: a thinner strip, always visible, and no collision with the window controls.
+
+Pick the accent variant in the project's `.vscode/settings.json` — one line, no color values to maintain:
+
+```jsonc
+{ "workbench.colorTheme": "Alien Blood Contrast High Blue" }
+```
+
+Available accent themes:
+
+| Accent | Standard | High contrast | Status bar |
+| --- | --- | --- | --- |
+| Green | `Alien Blood Contrast Green` | `Alien Blood Contrast High Green` | `#2f7e25` on `#f2f8f5` — 4.72:1 |
+| Blue | `Alien Blood Contrast Blue` | `Alien Blood Contrast High Blue` | `#2f6a7f` on `#f2f8f5` — 5.60:1 |
+| Orange | `Alien Blood Contrast Orange` | `Alien Blood Contrast High Orange` | `#e08009` on `#08120b` — 6.59:1 |
+| Violet | `Alien Blood Contrast Violet` | `Alien Blood Contrast High Violet` | `#47587f` on `#f2f8f5` — 6.57:1 |
+
+Orange is the one carrying dark text; a light foreground would drop to 2.69:1 on it.
+
+Each accent theme also pins `statusBar.debuggingBackground`, so the bar keeps the project's color while you debug instead of turning orange — which matters most when several debug sessions run side by side. `statusBarItem.remoteBackground` is pinned too, so the Remote/WSL indicator does not break the strip with its own green block.
+
+### Any other color
+
+If you need an accent outside those four, override the status bar per project instead. This works with any of the ten themes:
 
 ```jsonc
 {
   "workbench.colorCustomizations": {
-    "[Alien Blood Contrast][Alien Blood Contrast High]": {
-      "titleBar.activeBackground": "#2f6a7f",
-      "titleBar.activeForeground": "#e8f0ec",
-      "titleBar.inactiveBackground": "#2f6a7f99",
-      "titleBar.inactiveForeground": "#e8f0ec99"
+    "[Alien Blood Contrast High]": {
+      "statusBar.background": "#7f2b27",
+      "statusBar.foreground": "#f2f8f5",
+      "statusBar.border": "#7f2b27",
+      "statusBar.debuggingBackground": "#7f2b27",
+      "statusBar.debuggingForeground": "#f2f8f5",
+      "statusBar.noFolderBackground": "#7f2b27"
     }
   }
 }
 ```
 
-The theme scope in square brackets keeps the override from leaking into other themes.
+The theme name in square brackets keeps the override from leaking into other themes.
 
-Four distinguishable accents from the Alien Blood palette:
+## Building
 
-| Accent | `titleBar.activeBackground` | `titleBar.inactiveBackground` |
-| --- | --- | --- |
-| Green | `#2f7e25` | `#2f7e2599` |
-| Blue | `#2f6a7f` | `#2f6a7f99` |
-| Orange | `#e08009` | `#e0800999` |
-| Violet | `#47587f` | `#47587f99` |
+`themes/alien-blood-contrast.json` is the single source. Every other theme file and the `contributes.themes` list in `package.json` are generated:
 
-Use `#e8f0ec` as the foreground for all four.
+```
+npm run build-themes
+```
 
-Two notes:
-
-- `window.titleBarStyle` has to be `"custom"` for VS Code to paint the title bar. It is the default on Windows and Linux; on macOS you may need to set it explicitly and reload.
-- If the title bar alone is too subtle, tint `activityBar.background` as well — it is the larger surface.
+Edit the base theme, run the script, and all ten stay in sync. Hand edits to the generated files are lost on the next run.
 
 ## Credits
 
