@@ -18,15 +18,17 @@ alien-blood-contrast — eine VS Code Color Theme Extension, die Alien Blood UI 
 - `themes/alien-blood-contrast.json` — **die einzige handgepflegte Datei**, Quelle für alles andere
 - `themes/alien-blood-contrast-{green,blue,orange,violet}.json` — generiert
 - `themes/alien-blood-contrast-high*.json` — generiert
-- `scripts/build-themes.js` — Generator
+- `scripts/build-themes.js` — Theme-Generator
+- `scripts/build-preview.js` — erzeugt `docs/index.html`
+- `docs/index.html` — generierte Vorschau aller Varianten mit Kontrastwerten
 
 ## Generieren
 
 ```
-npm run build-themes
+npm run build
 ```
 
-Der Generator liest die Basisdatei und schreibt neun abgeleitete Theme-Dateien plus die `contributes.themes`-Liste in `package.json`. **Änderungen gehören ausschließlich in die Basisdatei** — Handänderungen an den generierten Dateien gehen beim nächsten Lauf verloren.
+Der Generator liest die Basisdatei und schreibt neun abgeleitete Theme-Dateien plus die `contributes.themes`-Liste in `package.json`; `build-preview` erzeugt zusätzlich `docs/index.html`. Beide Skripte sind idempotent. **Änderungen gehören ausschließlich in die Basisdatei** — Handänderungen an den generierten Dateien gehen beim nächsten Lauf verloren.
 
 Zwei Ableitungsregeln stecken im Generator:
 

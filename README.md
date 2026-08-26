@@ -80,13 +80,25 @@ The theme name in square brackets keeps the override from leaking into other the
 
 ## Building
 
-`themes/alien-blood-contrast.json` is the single source. Every other theme file and the `contributes.themes` list in `package.json` are generated:
+`themes/alien-blood-contrast.json` is the single source. Every other theme file, the `contributes.themes` list in `package.json`, and the preview page are generated:
 
 ```
-npm run build-themes
+npm run build
 ```
 
-Edit the base theme, run the script, and all ten stay in sync. Hand edits to the generated files are lost on the next run.
+Edit the base theme, run the script, and everything stays in sync. Hand edits to the generated files are lost on the next run.
+
+| Script | Output |
+| --- | --- |
+| `npm run build-themes` | the nine derived theme files, plus `contributes.themes` in `package.json` |
+| `npm run build-preview` | `docs/index.html` |
+| `npm run build` | both |
+
+### Preview page
+
+`docs/index.html` renders every variant side by side — editor sample, status bar, and the WCAG contrast ratio of each syntax color against its own background. It reads the theme JSON directly and resolves scopes the way VS Code does, so it is a check on the actual shipped values rather than a mockup. Open the file in a browser, or serve `docs/` via GitHub Pages.
+
+Rerun `npm run build-preview` after changing the base theme, otherwise the page shows stale colors.
 
 ## Credits
 

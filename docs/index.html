@@ -1,0 +1,254 @@
+<title>Alien Blood Contrast Varianten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ground:   #f4f7f4;
+    --surface:  #ffffff;
+    --ink:      #121a14;
+    --muted:    #5b6d61;
+    --line:     #dbe4dd;
+    --line-soft:#e9efea;
+    --accent:   #2f7e25;
+    --ok:       #1a7f45;
+    --warn:     #8a6500;
+    --bad:      #bd332c;
+    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground:   #0c110d;
+      --surface:  #141b16;
+      --ink:      #e3ece5;
+      --muted:    #90a396;
+      --line:     #242e27;
+      --line-soft:#1b231d;
+      --accent:   #56c944;
+      --ok:       #4ed17f;
+      --warn:     #d9b23c;
+      --bad:      #ff6d63;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground:   #0c110d;
+    --surface:  #141b16;
+    --ink:      #e3ece5;
+    --muted:    #90a396;
+    --line:     #242e27;
+    --line-soft:#1b231d;
+    --accent:   #56c944;
+    --ok:       #4ed17f;
+    --warn:     #d9b23c;
+    --bad:      #ff6d63;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    margin: 0;
+    padding: clamp(28px, 5vw, 56px) clamp(18px, 4vw, 44px) 72px;
+    font: 400 15px/1.6 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+
+  .masthead { display: flex; flex-direction: column; gap: 10px;
+              border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+  h1 { font: 600 clamp(27px, 3.4vw, 37px)/1.15 var(--serif); margin: 0;
+       letter-spacing: -0.015em; text-wrap: balance; }
+  .lede { margin: 0; color: var(--muted); max-width: 64ch; font-size: 15.5px; }
+
+  .eyebrow { font: 500 11px/1 var(--mono); letter-spacing: 0.13em;
+             text-transform: uppercase; color: var(--accent); margin: 0; }
+
+  section { display: flex; flex-direction: column; gap: 18px; }
+  .sec-head { display: flex; flex-direction: column; gap: 7px;
+              border-bottom: 1px solid var(--line-soft); padding-bottom: 13px; }
+  h2 { font: 600 19px/1.25 var(--serif); margin: 0; letter-spacing: -0.01em; }
+  .sec-head p { margin: 0; color: var(--muted); font-size: 14px; max-width: 68ch; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(390px, 1fr)); gap: 20px; }
+
+  .panel { background: var(--surface); border: 1px solid var(--line);
+           border-radius: 9px; padding: 17px; min-width: 0;
+           display: flex; flex-direction: column; gap: 14px; }
+  .panel-head { display: flex; flex-direction: column; gap: 5px; }
+  .panel-head h3 { font: 600 15.5px/1.2 var(--sans); margin: 0; }
+
+  .win { border-radius: 6px; overflow: hidden; border: 1px solid var(--line-soft); }
+  .editor { padding: 13px 0; overflow-x: auto; font: 400 12.5px/1.7 var(--mono); }
+  .ln { display: flex; white-space: pre; min-width: max-content; }
+  .num { flex: 0 0 46px; text-align: right; padding-right: 16px;
+         user-select: none; font-variant-numeric: tabular-nums; }
+  .code { flex: 1 1 auto; padding-right: 16px; }
+
+  .sb { display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        padding: 0 11px; height: 27px; font: 400 11.5px/1 var(--sans);
+        white-space: nowrap; overflow: hidden; }
+  .sb-grp { display: flex; gap: 15px; align-items: center; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { text-align: left; font: 500 10.5px/1 var(--mono); color: var(--muted);
+             text-transform: uppercase; letter-spacing: 0.1em; padding: 0 10px 8px 0; }
+  thead th:last-child, td.num-cell { text-align: right; padding-right: 0; }
+  tbody th { text-align: left; font-weight: 400; }
+  tbody th, td { padding: 6px 10px 6px 0; border-top: 1px solid var(--line-soft); }
+  .num-cell { font: 500 13px/1 var(--mono); font-variant-numeric: tabular-nums; }
+  code { font: 400 12px/1 var(--mono); color: var(--muted); }
+
+  .chip { display: inline-block; width: 11px; height: 11px; border-radius: 3px;
+          margin-right: 7px; vertical-align: -1px;
+          box-shadow: inset 0 0 0 1px rgba(128,128,128,.4); }
+
+  .ok { color: var(--ok); }
+  .warn { color: var(--warn); }
+  .bad { color: var(--bad); }
+
+  .acc { background: var(--surface); border: 1px solid var(--line); border-radius: 9px;
+         padding: 15px 17px; display: grid; grid-template-columns: minmax(230px, 300px) 1fr;
+         gap: 20px; align-items: center; }
+  .acc-meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .acc-meta h3 { font: 600 15px/1.2 var(--sans); margin: 0; }
+  .acc-name { margin: 0; }
+  .acc-nums { margin: 2px 0 0; display: flex; align-items: center; gap: 6px;
+              flex-wrap: wrap; font-size: 12px; }
+  .acc-nums .num-cell { font-size: 12px; }
+  .sep { color: var(--muted); }
+  .acc-win { min-width: 0; }
+  @media (max-width: 700px) {
+    .acc { grid-template-columns: 1fr; gap: 13px; align-items: stretch; }
+  }
+
+  .note { margin: 0; color: var(--muted); font-size: 13.5px; max-width: 70ch;
+          border-left: 2px solid var(--accent); padding-left: 13px; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+             overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">VS Code Extension &middot; zehn Themes, ein Paket</p>
+    <h1>Alien Blood Contrast</h1>
+    <p class="lede">Farben direkt aus den Theme-JSON-Dateien gelesen, Scope-Auflösung wie in VS Code. Kontrastwerte nach WCAG, jeweils gegen den eigenen Hintergrund der Variante.</p>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2>Kontraststufen</h2>
+      <p>Beide teilen jede Hintergrundfläche — angehoben sind nur Text, Icons, Rahmen und Zeilennummern. Zeile&nbsp;7 zeigt zusätzlich das Zeilen-Highlight.</p>
+    </div>
+    <div class="grid"><article class="panel">
+      <header class="panel-head">
+        <p class="eyebrow">Standard</p>
+        <h3>Alien Blood Contrast</h3>
+      </header>
+      <div class="win"><div class="editor" style="background:#0f1610"><div class="ln"><span class="num" style="color:#1d4125">1</span><span class="code"><span style="color:#586E75;font-style:italic;">// resolve the active color theme</span></span></div><div class="ln"><span class="num" style="color:#1d4125">2</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#1d4125">3</span><span class="code"><span style="color:#859900;">export</span><span style="color:#839496;"> </span><span style="color:#93A1A1;font-weight:600;">class</span><span style="color:#839496;"> </span><span style="color:#CB4B16;">ThemeRegistry</span><span style="color:#839496;"> {</span></span></div><div class="ln"><span class="num" style="color:#1d4125">4</span><span class="code"><span style="color:#93A1A1;font-weight:600;">  private</span><span style="color:#839496;"> themes = </span><span style="color:#CB4B16;">new</span><span style="color:#839496;"> </span><span style="color:#859900;">Map</span><span style="color:#839496;">&lt;</span><span style="color:#859900;">string</span><span style="color:#839496;">, Theme&gt;();</span></span></div><div class="ln"><span class="num" style="color:#1d4125">5</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#1d4125">6</span><span class="code"><span style="color:#839496;">  </span><span style="color:#268BD2;">register</span><span style="color:#839496;">(id: </span><span style="color:#859900;">string</span><span style="color:#839496;">, theme: Theme): </span><span style="color:#859900;">void</span><span style="color:#839496;"> {</span></span></div><div class="ln" style="background:#1d412520"><span class="num" style="color:#637d75">7</span><span class="code"><span style="color:#839496;">    </span><span style="color:#859900;">if</span><span style="color:#839496;"> (!id) </span><span style="color:#859900;">throw</span><span style="color:#839496;"> </span><span style="color:#CB4B16;">new</span><span style="color:#839496;"> </span><span style="color:#CB4B16;">Error</span><span style="color:#839496;">(</span><span style="color:#2AA198;">"id is required"</span><span style="color:#839496;">);</span></span></div><div class="ln"><span class="num" style="color:#1d4125">8</span><span class="code"><span style="color:#839496;">    </span><span style="color:#268BD2;">this</span><span style="color:#839496;">.themes.set(id, theme);</span></span></div><div class="ln"><span class="num" style="color:#1d4125">9</span><span class="code"><span style="color:#839496;">  }</span></span></div><div class="ln"><span class="num" style="color:#1d4125">10</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#1d4125">11</span><span class="code"><span style="color:#93A1A1;font-weight:600;">  get</span><span style="color:#839496;"> </span><span style="color:#268BD2;">size</span><span style="color:#839496;">(): </span><span style="color:#859900;">number</span><span style="color:#839496;"> {</span></span></div><div class="ln"><span class="num" style="color:#1d4125">12</span><span class="code"><span style="color:#839496;">    </span><span style="color:#859900;">return</span><span style="color:#839496;"> </span><span style="color:#268BD2;">this</span><span style="color:#839496;">.themes.size ?? </span><span style="color:#D33682;">0</span><span style="color:#839496;">;</span></span></div><div class="ln"><span class="num" style="color:#1d4125">13</span><span class="code"><span style="color:#839496;">  }</span></span></div><div class="ln"><span class="num" style="color:#1d4125">14</span><span class="code"><span style="color:#839496;">}</span></span></div></div><div class="sb" style="background:#000e07;color:#637d75">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+      <table>
+        <caption class="sr-only">Kontrastwerte für Alien Blood Contrast</caption>
+        <thead><tr><th scope="col">Element</th><th scope="col">Farbe</th><th scope="col">Kontrast</th></tr></thead>
+        <tbody><tr><th scope="row">Normaler Text</th><td><span class="chip" style="background:#839496"></span><code>#839496</code></td><td class="num-cell warn">5.81</td></tr><tr><th scope="row">Kommentar</th><td><span class="chip" style="background:#586E75"></span><code>#586E75</code></td><td class="num-cell bad">3.42</td></tr><tr><th scope="row">Keyword</th><td><span class="chip" style="background:#859900"></span><code>#859900</code></td><td class="num-cell warn">5.74</td></tr><tr><th scope="row">String</th><td><span class="chip" style="background:#2AA198"></span><code>#2AA198</code></td><td class="num-cell warn">5.82</td></tr><tr><th scope="row">Klassenname</th><td><span class="chip" style="background:#CB4B16"></span><code>#CB4B16</code></td><td class="num-cell bad">3.99</td></tr><tr><th scope="row">Zahl</th><td><span class="chip" style="background:#D33682"></span><code>#D33682</code></td><td class="num-cell bad">4.04</td></tr><tr><th scope="row">Zeilennummer</th><td><span class="chip" style="background:#1d4125"></span><code>#1d4125</code></td><td class="num-cell bad">1.61</td></tr></tbody>
+      </table>
+    </article><article class="panel">
+      <header class="panel-head">
+        <p class="eyebrow">Kontraststark</p>
+        <h3>Alien Blood Contrast High</h3>
+      </header>
+      <div class="win"><div class="editor" style="background:#0f1610"><div class="ln"><span class="num" style="color:#6cae7a">1</span><span class="code"><span style="color:#93a8ae;font-style:italic;">// resolve the active color theme</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">2</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#6cae7a">3</span><span class="code"><span style="color:#c3dd1a;">export</span><span style="color:#d3dede;"> </span><span style="color:#dce6e6;font-weight:600;">class</span><span style="color:#d3dede;"> </span><span style="color:#ff7b30;">ThemeRegistry</span><span style="color:#d3dede;"> {</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">4</span><span class="code"><span style="color:#dce6e6;font-weight:600;">  private</span><span style="color:#d3dede;"> themes = </span><span style="color:#ff7b30;">new</span><span style="color:#d3dede;"> </span><span style="color:#c3dd1a;">Map</span><span style="color:#d3dede;">&lt;</span><span style="color:#c3dd1a;">string</span><span style="color:#d3dede;">, Theme&gt;();</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">5</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#6cae7a">6</span><span class="code"><span style="color:#d3dede;">  </span><span style="color:#63bdff;">register</span><span style="color:#d3dede;">(id: </span><span style="color:#c3dd1a;">string</span><span style="color:#d3dede;">, theme: Theme): </span><span style="color:#c3dd1a;">void</span><span style="color:#d3dede;"> {</span></span></div><div class="ln" style="background:#1d412520"><span class="num" style="color:#e2f0e8">7</span><span class="code"><span style="color:#d3dede;">    </span><span style="color:#c3dd1a;">if</span><span style="color:#d3dede;"> (!id) </span><span style="color:#c3dd1a;">throw</span><span style="color:#d3dede;"> </span><span style="color:#ff7b30;">new</span><span style="color:#d3dede;"> </span><span style="color:#ff7b30;">Error</span><span style="color:#d3dede;">(</span><span style="color:#4fdcd0;">"id is required"</span><span style="color:#d3dede;">);</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">8</span><span class="code"><span style="color:#d3dede;">    </span><span style="color:#63bdff;">this</span><span style="color:#d3dede;">.themes.set(id, theme);</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">9</span><span class="code"><span style="color:#d3dede;">  }</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">10</span><span class="code">&nbsp;</span></div><div class="ln"><span class="num" style="color:#6cae7a">11</span><span class="code"><span style="color:#dce6e6;font-weight:600;">  get</span><span style="color:#d3dede;"> </span><span style="color:#63bdff;">size</span><span style="color:#d3dede;">(): </span><span style="color:#c3dd1a;">number</span><span style="color:#d3dede;"> {</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">12</span><span class="code"><span style="color:#d3dede;">    </span><span style="color:#c3dd1a;">return</span><span style="color:#d3dede;"> </span><span style="color:#63bdff;">this</span><span style="color:#d3dede;">.themes.size ?? </span><span style="color:#ff6bad;">0</span><span style="color:#d3dede;">;</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">13</span><span class="code"><span style="color:#d3dede;">  }</span></span></div><div class="ln"><span class="num" style="color:#6cae7a">14</span><span class="code"><span style="color:#d3dede;">}</span></span></div></div><div class="sb" style="background:#000e07;color:#c2d8ce">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+      <table>
+        <caption class="sr-only">Kontrastwerte für Alien Blood Contrast High</caption>
+        <thead><tr><th scope="col">Element</th><th scope="col">Farbe</th><th scope="col">Kontrast</th></tr></thead>
+        <tbody><tr><th scope="row">Normaler Text</th><td><span class="chip" style="background:#d3dede"></span><code>#d3dede</code></td><td class="num-cell ok">13.37</td></tr><tr><th scope="row">Kommentar</th><td><span class="chip" style="background:#93a8ae"></span><code>#93a8ae</code></td><td class="num-cell ok">7.40</td></tr><tr><th scope="row">Keyword</th><td><span class="chip" style="background:#c3dd1a"></span><code>#c3dd1a</code></td><td class="num-cell ok">11.97</td></tr><tr><th scope="row">String</th><td><span class="chip" style="background:#4fdcd0"></span><code>#4fdcd0</code></td><td class="num-cell ok">10.92</td></tr><tr><th scope="row">Klassenname</th><td><span class="chip" style="background:#ff7b30"></span><code>#ff7b30</code></td><td class="num-cell ok">7.11</td></tr><tr><th scope="row">Zahl</th><td><span class="chip" style="background:#ff6bad"></span><code>#ff6bad</code></td><td class="num-cell warn">6.97</td></tr><tr><th scope="row">Zeilennummer</th><td><span class="chip" style="background:#6cae7a"></span><code>#6cae7a</code></td><td class="num-cell warn">6.98</td></tr></tbody>
+      </table>
+    </article></div>
+    <p class="note">In der Standard-Variante liegen fünf Elemente unter dem AA-Schwellwert von 4.5:1, in der kontraststarken keines — der schwächste Wert dort ist 6.15:1.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Statusbar-Akzente</h2>
+      <p>Zum Unterscheiden mehrerer Fenster. Jede Akzent-Variante ist mit ihrer Stufe identisch bis auf die <code>statusBar*</code>-Keys; gezeigt ist die kontraststarke Stufe, die Standard-Stufe trägt dieselben vier Farben.</p>
+    </div>
+    <article class="acc">
+      <div class="acc-meta">
+        <h3>Grün</h3>
+        <p class="acc-name"><code>Alien Blood Contrast High Green</code></p>
+        <p class="acc-nums">
+          <span class="chip" style="background:#2f7e25"></span><code>#2f7e25</code>
+          <span class="sep">auf</span>
+          <span class="chip" style="background:#f2f8f5"></span><code>#f2f8f5</code>
+          <span class="sep">&middot;</span>
+          <span class="warn num-cell">4.72:1</span>
+        </p>
+      </div>
+      <div class="win acc-win"><div class="sb" style="background:#2f7e25;color:#f2f8f5">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+    </article><article class="acc">
+      <div class="acc-meta">
+        <h3>Blau</h3>
+        <p class="acc-name"><code>Alien Blood Contrast High Blue</code></p>
+        <p class="acc-nums">
+          <span class="chip" style="background:#2f6a7f"></span><code>#2f6a7f</code>
+          <span class="sep">auf</span>
+          <span class="chip" style="background:#f2f8f5"></span><code>#f2f8f5</code>
+          <span class="sep">&middot;</span>
+          <span class="warn num-cell">5.60:1</span>
+        </p>
+      </div>
+      <div class="win acc-win"><div class="sb" style="background:#2f6a7f;color:#f2f8f5">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+    </article><article class="acc">
+      <div class="acc-meta">
+        <h3>Orange</h3>
+        <p class="acc-name"><code>Alien Blood Contrast High Orange</code></p>
+        <p class="acc-nums">
+          <span class="chip" style="background:#e08009"></span><code>#e08009</code>
+          <span class="sep">auf</span>
+          <span class="chip" style="background:#08120b"></span><code>#08120b</code>
+          <span class="sep">&middot;</span>
+          <span class="warn num-cell">6.59:1</span>
+        </p>
+      </div>
+      <div class="win acc-win"><div class="sb" style="background:#e08009;color:#08120b">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+    </article><article class="acc">
+      <div class="acc-meta">
+        <h3>Violett</h3>
+        <p class="acc-name"><code>Alien Blood Contrast High Violet</code></p>
+        <p class="acc-nums">
+          <span class="chip" style="background:#47587f"></span><code>#47587f</code>
+          <span class="sep">auf</span>
+          <span class="chip" style="background:#f2f8f5"></span><code>#f2f8f5</code>
+          <span class="sep">&middot;</span>
+          <span class="warn num-cell">6.57:1</span>
+        </p>
+      </div>
+      <div class="win acc-win"><div class="sb" style="background:#47587f;color:#f2f8f5">
+      <span class="sb-grp"><span>&#9095;&nbsp; main*</span><span>&#8593;1 &#8595;0</span><span>&#9888;&nbsp;0 &nbsp;&#10006;&nbsp;0</span></span>
+      <span class="sb-grp"><span>Ln 12, Col 4</span><span>UTF-8</span><span>TypeScript</span></span>
+    </div></div>
+    </article>
+    <p class="note">Orange trägt als einziges dunklen Text — auf dem hellen Orange käme Weiß nur auf 2.69:1 und wäre kaum lesbar.</p>
+  </section>
+</div>
