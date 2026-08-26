@@ -56,6 +56,13 @@ jobs:
       - name: Package
         run: npx --yes @vscode/vsce package --out extension.vsix
 
+      # Runs on dry runs too, so the credential can be checked without
+      # uploading anything.
+      - name: Marketplace token is valid
+        run: npx --yes @vscode/vsce verify-pat kozcode
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
       - name: Publish
         if: startsWith(github.ref, 'refs/tags/') && inputs.dry_run != true
         run: npx --yes @vscode/vsce publish --packagePath extension.vsix
