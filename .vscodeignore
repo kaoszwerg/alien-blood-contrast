@@ -1,5 +1,7 @@
 .vscode/**
 .git/**
+.github/**
+.gitattributes
 .gitignore
 CLAUDE.md
 *.vsix
